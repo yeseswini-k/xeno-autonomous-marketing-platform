@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from 'react';
-const API = import.meta.env.VITE_API_URL;
 
 export type CurrencyType = 'USD' | 'INR' | 'EUR' | 'GBP' | 'AED' | 'SGD';
 export type LocaleType = 'en-US' | 'en-IN' | 'en-GB' | 'de-DE' | 'fr-FR';

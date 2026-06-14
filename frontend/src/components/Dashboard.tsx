@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Target, ArrowUpRight, BarChart3, Database, ChevronRight, CheckCircle2, TrendingUp, X, AlertTriangle } from 'lucide-react';
 import { CampaignData, QueueState, LiveEvent } from '../App';
 import { useSettings } from '../context/SettingsContext';
-const API = import.meta.env.VITE_API_URL;
 
 interface DashboardProps {
   campaigns: CampaignData[];
@@ -34,10 +33,10 @@ const Dashboard: React.FC<DashboardProps> = ({ campaigns, shoppersCount, queues,
   useEffect(() => {
     const fetchCustomersAndAnalyze = async () => {
       try {
-        const response = await fetch(`${API}/api/crm/customers?asOf=${asOf}`);
+        const response = await fetch(`/api/crm/customers?asOf=${asOf}`);
         if (response.ok) {
           const customers = await response.json();
-          const ordersResponse = await fetch(`${API}/api/crm/orders?asOf=${asOf}`);
+          const ordersResponse = await fetch(`/api/crm/orders?asOf=${asOf}`);
           if (ordersResponse.ok) {
             const orders = await ordersResponse.json();
             setOrdersList(orders);
@@ -83,7 +82,7 @@ const Dashboard: React.FC<DashboardProps> = ({ campaigns, shoppersCount, queues,
 
     const fetchDetail = async () => {
       try {
-        const response = await fetch(`${API}/api/crm/campaigns/${selectedCampaignId}?asOf=${asOf}`);
+        const response = await fetch(`/api/crm/campaigns/${selectedCampaignId}?asOf=${asOf}`);
         if (response.ok) {
           const data = await response.json();
           setInspectorData(data);
@@ -116,7 +115,7 @@ const Dashboard: React.FC<DashboardProps> = ({ campaigns, shoppersCount, queues,
   const handleReset = async () => {
     if (confirm('Are you sure you want to reset the CRM database? This will clear all campaign data, webhook queues, and reset settings.')) {
       try {
-        const response = await fetch(`${API}/api/crm/system/reset', { method: 'POST' });
+        const response = await fetch('/api/crm/system/reset', { method: 'POST' });
         if (response.ok) {
           fetchData();
         }

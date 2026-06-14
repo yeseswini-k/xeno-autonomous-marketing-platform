@@ -5,7 +5,6 @@ type MessageLog = any;
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Calendar, UserCheck, Database, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
-const API = import.meta.env.VITE_API_URL;
 
 interface SelectedCustomerDetail extends Customer {
   orders: Order[];
@@ -65,13 +64,13 @@ const Shoppers: React.FC<ShoppersProps> = ({ onOpenIngester, asOf }) => {
   // Fetch single customer detail when clicked
   const fetchCustomerDetail = async (id: string) => {
     try {
-      const response = await fetch(`${API}/api/crm/customers/${id}?asOf=${asOf}`);
+      const response = await fetch(`/api/crm/customers/${id}?asOf=${asOf}`);
       if (response.ok) {
         const data = await response.json();
         setSelectedCustomer(data);
       }
 
-      const analResponse = await fetch(`${API}/api/crm/customers/${id}/analytics?asOf=${asOf}`);
+      const analResponse = await fetch(`/api/crm/customers/${id}/analytics?asOf=${asOf}`);
       if (analResponse.ok) {
         const analData = await analResponse.json();
         setAnalytics(analData);

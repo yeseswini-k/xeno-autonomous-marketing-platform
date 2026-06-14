@@ -16,7 +16,6 @@ interface AISuggestion {
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, X, Terminal, CheckCircle2 } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
-const API = import.meta.env.VITE_API_URL;
 
 interface AICopilotProps {
   isOpen: boolean;
@@ -76,7 +75,7 @@ const AICopilot: React.FC<AICopilotProps> = ({ isOpen, onClose, onCampaignCreate
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${API}/api/crm/ai-prompt', {
+      const response = await fetch('/api/crm/ai-prompt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -110,7 +109,7 @@ const AICopilot: React.FC<AICopilotProps> = ({ isOpen, onClose, onCampaignCreate
 
   const handleLaunchCampaign = async (sug: AISuggestion) => {
     try {
-      const response = await fetch(`${API}/api/crm/campaigns', {
+      const response = await fetch('/api/crm/campaigns', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

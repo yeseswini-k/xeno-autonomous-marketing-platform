@@ -4,7 +4,6 @@ import {
   CheckCircle2, X, ChevronDown, ChevronUp, Cpu 
 } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
-const API = import.meta.env.VITE_API_URL;
 
 interface Opportunity {
   id: string;
@@ -62,7 +61,7 @@ const OpportunityCenter: React.FC<OpportunityCenterProps> = ({ onCampaignCreated
   const fetchOpportunities = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${API}/api/crm/ai/opportunities?asOf=${asOf}`);
+      const response = await fetch(`/api/crm/ai/opportunities?asOf=${asOf}`);
       if (response.ok) {
         const data = await response.json();
         setOpportunities(data);
@@ -93,7 +92,7 @@ const OpportunityCenter: React.FC<OpportunityCenterProps> = ({ onCampaignCreated
         messageTemplateB: isABTest ? messageTemplateB : undefined
       };
 
-      const response = await fetch(`${API}/api/crm/campaigns', {
+      const response = await fetch('/api/crm/campaigns', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -127,7 +126,7 @@ const OpportunityCenter: React.FC<OpportunityCenterProps> = ({ onCampaignCreated
     setAutopilotTemplateB('');
 
     try {
-      const response = await fetch(`${API}/api/crm/ai/autopilot?asOf=${asOf}`, {
+      const response = await fetch(`/api/crm/ai/autopilot?asOf=${asOf}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ goal: goalText })
@@ -161,7 +160,7 @@ const OpportunityCenter: React.FC<OpportunityCenterProps> = ({ onCampaignCreated
         messageTemplateB: autopilotIsAB ? autopilotTemplateB : undefined
       };
 
-      const response = await fetch(`${API}/api/crm/campaigns', {
+      const response = await fetch('/api/crm/campaigns', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
