@@ -1,6 +1,9 @@
+type Customer = any;
+type Order = any;
+type MessageLog = any;
+
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Calendar, UserCheck, Database, ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { Customer, Order, MessageLog } from '../../../backend/src/db';
 import { useSettings } from '../context/SettingsContext';
 
 interface SelectedCustomerDetail extends Customer {

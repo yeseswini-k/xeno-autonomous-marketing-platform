@@ -1,6 +1,20 @@
+
+interface AISuggestion {
+  segmentRules: {
+    minSpent?: number;
+    maxSpent?: number;
+    minOrders?: number;
+    lastOrderDaysAgo?: number;
+    customFilter?: string;
+  };
+  messageTemplate: string;
+  channel: 'whatsapp' | 'sms' | 'email' | 'rcs' | 'push';
+  campaignName: string;
+  explanation: string;
+}
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, X, Terminal, CheckCircle2 } from 'lucide-react';
-import { AISuggestion } from '../../../backend/src/ai';
 import { useSettings } from '../context/SettingsContext';
 
 interface AICopilotProps {
