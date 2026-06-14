@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sliders, Trash2 } from 'lucide-react';
 import { QueueState } from '../App';
+import { API_BASE } from '../config';
 
 interface LogEntry {
   id: string;
@@ -27,7 +28,7 @@ const ChannelHub: React.FC<ChannelHubProps> = ({ logs, queues, clearLogs }) => {
   // Fetch current simulator config
   const fetchConfig = async () => {
     try {
-      const response = await fetch('/api/channel/config');
+      const response = await fetch(`${API_BASE}/api/channel/config`);
       if (response.ok) {
         const config = await response.json();
         setLatencyMin(config.latencyMin);
@@ -50,7 +51,7 @@ const ChannelHub: React.FC<ChannelHubProps> = ({ logs, queues, clearLogs }) => {
     e.preventDefault();
     setIsSaving(true);
     try {
-      const response = await fetch('/api/channel/config', {
+      const response = await fetch(`${API_BASE}/api/channel/config`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

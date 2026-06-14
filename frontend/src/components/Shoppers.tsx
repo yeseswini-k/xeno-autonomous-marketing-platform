@@ -5,6 +5,7 @@ type MessageLog = any;
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Calendar, UserCheck, Database, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
+import { API_BASE } from '../config';
 
 interface SelectedCustomerDetail extends Customer {
   orders: Order[];
@@ -42,7 +43,7 @@ const Shoppers: React.FC<ShoppersProps> = ({ onOpenIngester, asOf }) => {
   const fetchShoppers = async () => {
     setIsLoading(true);
     try {
-      let url = `/api/crm/customers?search=${search}&asOf=${asOf}`;
+      let url = `${API_BASE}/api/crm/customers?search=${search}&asOf=${asOf}`;
       if (minSpent) url += `&minSpent=${minSpent}`;
       
       const response = await fetch(url);
@@ -64,13 +65,13 @@ const Shoppers: React.FC<ShoppersProps> = ({ onOpenIngester, asOf }) => {
   // Fetch single customer detail when clicked
   const fetchCustomerDetail = async (id: string) => {
     try {
-      const response = await fetch(`/api/crm/customers/${id}?asOf=${asOf}`);
+      const response = await fetch(`${API_BASE}/api/crm/customers/${id}?asOf=${asOf}`);
       if (response.ok) {
         const data = await response.json();
         setSelectedCustomer(data);
       }
 
-      const analResponse = await fetch(`/api/crm/customers/${id}/analytics?asOf=${asOf}`);
+      const analResponse = await fetch(`${API_BASE}/api/crm/customers/${id}/analytics?asOf=${asOf}`);
       if (analResponse.ok) {
         const analData = await analResponse.json();
         setAnalytics(analData);
@@ -79,6 +80,7 @@ const Shoppers: React.FC<ShoppersProps> = ({ onOpenIngester, asOf }) => {
       console.error('Failed to fetch customer detail:', err);
     }
   };
+
 
   useEffect(() => {
     setCurrentPage(1);

@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 
 import { useSettings } from '../context/SettingsContext';
+import { API_BASE } from '../config';
 
 interface SegmentBuilderProps {
   onCampaignCreated: () => void;
@@ -66,7 +67,7 @@ const SegmentBuilder: React.FC<SegmentBuilderProps> = ({ onCampaignCreated, show
   // Fetch campaigns for Learned Patterns
   const fetchCampaigns = async () => {
     try {
-      const res = await fetch(`/api/crm/campaigns?asOf=${asOf}`);
+      const res = await fetch(`${API_BASE}/api/crm/campaigns?asOf=${asOf}`);
       if (res.ok) {
         const data = await res.json();
         setCampaigns(data);
@@ -91,7 +92,7 @@ const SegmentBuilder: React.FC<SegmentBuilderProps> = ({ onCampaignCreated, show
         customFilter: customFilter || undefined
       };
 
-      const response = await fetch(`/api/crm/segments/preview?asOf=${asOf}`, {
+      const response = await fetch(`${API_BASE}/api/crm/segments/preview?asOf=${asOf}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -118,7 +119,7 @@ const SegmentBuilder: React.FC<SegmentBuilderProps> = ({ onCampaignCreated, show
     if (!nlpPrompt.trim() || isNlpCompiling) return;
     setIsNlpCompiling(true);
     try {
-      const response = await fetch(`/api/crm/ai-prompt?asOf=${asOf}`, {
+      const response = await fetch(`${API_BASE}/api/crm/ai-prompt?asOf=${asOf}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: nlpPrompt })
@@ -168,7 +169,7 @@ const SegmentBuilder: React.FC<SegmentBuilderProps> = ({ onCampaignCreated, show
         channel
       };
 
-      const response = await fetch('/api/crm/campaigns', {
+      const response = await fetch(`${API_BASE}/api/crm/campaigns`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

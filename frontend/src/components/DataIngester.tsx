@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Database, FileText, CheckCircle2, AlertCircle, Play, X } from 'lucide-react';
 import { PRESETS } from '../utils/presets';
+import { API_BASE } from '../config';
 
 interface DataIngesterProps {
   isOpen: boolean;
@@ -63,7 +64,7 @@ const DataIngester: React.FC<DataIngesterProps> = ({ isOpen, onClose, onImportSu
     setIngestionResult(null);
 
     try {
-      const response = await fetch('/api/crm/customers/import', {
+      const response = await fetch(`${API_BASE}/api/crm/customers/import`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(parsed)

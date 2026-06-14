@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://xeno-autonomous-marketing-platform.onrender.com/api/:path*"
-    }
-  ]
-}
