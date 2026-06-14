@@ -18,6 +18,7 @@ export interface PresetOrder {
   amount: number;
   items: string[];
   status: 'completed' | 'processing' | 'pending';
+  campaignId?: string;
   createdAt: string;
 }
 
@@ -33,6 +34,8 @@ export interface PresetProfile {
   data: {
     customers: PresetCustomer[];
     orders: PresetOrder[];
+    campaigns?: any[];
+    messages?: any[];
   };
 }
 
@@ -185,6 +188,86 @@ export const PRESETS: Record<string, PresetProfile> = {
           phone: '+91 98110 22334',
           createdAt: new Date(now - 10 * 24 * 60 * 60 * 1000).toISOString(),
           metadata: { preferredCategory: 'Ethnic Wear', loyaltyTier: 'Member', location: 'Delhi', acquisitionChannel: 'Instagram' }
+        },
+        {
+          id: 'cust_d2c_in_06',
+          name: 'Ishaan Gupta',
+          email: 'ishaan.g@kalyan-d2c.in',
+          phone: '+91 99334 45566',
+          createdAt: new Date(now - 18 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Coffee', loyaltyTier: 'Standard', location: 'Kolkata', acquisitionChannel: 'Google Search' }
+        },
+        {
+          id: 'cust_d2c_in_07',
+          name: 'Anika Nair',
+          email: 'anika.nair@kalyan-d2c.in',
+          phone: '+91 88990 01122',
+          createdAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Ethnic Wear', loyaltyTier: 'VIP', location: 'Kochi', acquisitionChannel: 'Referral' }
+        },
+        {
+          id: 'cust_d2c_in_08',
+          name: 'Kabir Malhotra',
+          email: 'kabir.m@kalyan-d2c.in',
+          phone: '+91 92233 44556',
+          createdAt: new Date(now - 40 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Men Apparel', loyaltyTier: 'Standard', location: 'Mumbai', acquisitionChannel: 'TikTok' }
+        },
+        {
+          id: 'cust_d2c_in_09',
+          name: 'Meera Krishnan',
+          email: 'meera.k@kalyan-d2c.in',
+          phone: '+91 94455 66778',
+          createdAt: new Date(now - 14 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Home Decor', loyaltyTier: 'Member', location: 'Pune', acquisitionChannel: 'Instagram' }
+        },
+        {
+          id: 'cust_d2c_in_10',
+          name: 'Aditya Rao',
+          email: 'aditya.rao@kalyan-d2c.in',
+          phone: '+91 94440 12345',
+          createdAt: new Date(now - 8 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Coffee', loyaltyTier: 'VIP', location: 'Bangalore', acquisitionChannel: 'Facebook Ads' }
+        },
+        {
+          id: 'cust_d2c_in_11',
+          name: 'Riya Kapoor',
+          email: 'riya.k@kalyan-d2c.in',
+          phone: '+91 98888 77777',
+          createdAt: new Date(now - 22 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Beauty', loyaltyTier: 'Standard', location: 'Kolkata', acquisitionChannel: 'Instagram' }
+        },
+        {
+          id: 'cust_d2c_in_12',
+          name: 'Rohan Verma',
+          email: 'rohan.v@kalyan-d2c.in',
+          phone: '+91 99112 23344',
+          createdAt: new Date(now - 30 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Ethnic Wear', loyaltyTier: 'Member', location: 'Delhi', acquisitionChannel: 'Google Search' }
+        },
+        {
+          id: 'cust_d2c_in_13',
+          name: 'Tanya Saxena',
+          email: 'tanya.s@kalyan-d2c.in',
+          phone: '+91 95556 67788',
+          createdAt: new Date(now - 25 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Organic Goods', loyaltyTier: 'Standard', location: 'Noida', acquisitionChannel: 'Referral' }
+        },
+        {
+          id: 'cust_d2c_in_14',
+          name: 'Arjun Singh',
+          email: 'arjun.singh@kalyan-d2c.in',
+          phone: '+91 85554 32109',
+          createdAt: new Date(now - 50 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Ethnic Wear', loyaltyTier: 'VIP', location: 'Jaipur', acquisitionChannel: 'TikTok' }
+        },
+        {
+          id: 'cust_d2c_in_15',
+          name: 'Kavya Joshi',
+          email: 'kavya.j@kalyan-d2c.in',
+          phone: '+91 91112 22334',
+          createdAt: new Date(now - 15 * 24 * 60 * 60 * 1000).toISOString(),
+          metadata: { preferredCategory: 'Home Decor', loyaltyTier: 'Standard', location: 'Ahmedabad', acquisitionChannel: 'Instagram' }
         }
       ],
       orders: [
@@ -227,10 +310,188 @@ export const PRESETS: Record<string, PresetProfile> = {
           items: ['Handcrafted Leather Juttis', 'Embroidered Kashmiri Shawl'],
           status: 'completed',
           createdAt: new Date(now - 55 * 24 * 60 * 60 * 1000).toISOString()
+        },
+        {
+          id: 'ord_d2c_in_106',
+          customerId: 'cust_d2c_in_05',
+          amount: 3200.00,
+          items: ['Cotton Salwar Kameez'],
+          status: 'completed',
+          createdAt: new Date(now - 10 * 24 * 60 * 60 * 1000).toISOString()
+        },
+        {
+          id: 'ord_d2c_in_107',
+          customerId: 'cust_d2c_in_07',
+          amount: 9500.00,
+          items: ['Kanchipuram Silk Saree'],
+          status: 'completed',
+          createdAt: new Date(now - 3 * 24 * 60 * 60 * 1000).toISOString()
+        },
+        {
+          id: 'ord_d2c_in_108',
+          customerId: 'cust_d2c_in_08',
+          amount: 4200.00,
+          items: ['Designer Kurta Pajama'],
+          status: 'completed',
+          createdAt: new Date(now - 40 * 24 * 60 * 60 * 1000).toISOString()
+        },
+        {
+          id: 'ord_d2c_in_109',
+          customerId: 'cust_d2c_in_10',
+          amount: 6500.00,
+          items: ['French Press Coffee Maker', 'Premium Arabica Beans'],
+          status: 'completed',
+          createdAt: new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString()
+        },
+        {
+          id: 'ord_d2c_in_110',
+          customerId: 'cust_d2c_in_10',
+          amount: 14000.00,
+          items: ['Espresso Brewing Kit'],
+          status: 'completed',
+          campaignId: 'camp_d2c_in_01',
+          createdAt: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString()
+        }
+      ],
+      campaigns: [
+        {
+          id: 'camp_d2c_in_01',
+          name: 'Festive Ethnic Wear Promotion',
+          segmentRules: { customFilter: 'Ethnic Wear' },
+          messageTemplate: 'Hey {{first_name}}! Elevate your style with Kalyan Textiles. Get 15% off on Ethnic Wear with code FESTIVE15. http://xeno.shop/festive',
+          channel: 'whatsapp',
+          status: 'completed',
+          createdAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          stats: { total: 5, sent: 5, delivered: 5, failed: 0, opened: 4, read: 4, clicked: 2, converted: 1, revenue: 14000 }
+        },
+        {
+          id: 'camp_d2c_in_02',
+          name: 'VIP Winback Campaign',
+          segmentRules: { customFilter: 'VIP' },
+          messageTemplate: 'Hi {{first_name}}! We miss you at Kalyan Textiles. Enjoy a special 20% discount with code VIPWELCOME20. http://xeno.shop/vip',
+          channel: 'email',
+          status: 'sending',
+          createdAt: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString(),
+          stats: { total: 3, sent: 3, delivered: 2, failed: 0, opened: 1, read: 1, clicked: 0, converted: 0, revenue: 0 }
+        }
+      ],
+      messages: [
+        {
+          id: 'msg_01',
+          campaignId: 'camp_d2c_in_01',
+          customerId: 'cust_d2c_in_01',
+          channel: 'whatsapp',
+          recipient: '+91 98765 43210',
+          content: 'Hey Aarav! Elevate your style with Kalyan Textiles. Get 15% off on Ethnic Wear with code FESTIVE15. http://xeno.shop/festive',
+          status: 'read',
+          retryCount: 0,
+          createdAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          updatedAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          timeline: [{ status: 'pending', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }, { status: 'read', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }],
+          variant: 'A'
+        },
+        {
+          id: 'msg_02',
+          campaignId: 'camp_d2c_in_01',
+          customerId: 'cust_d2c_in_05',
+          channel: 'whatsapp',
+          recipient: '+91 98110 22334',
+          content: 'Hey Diya! Elevate your style with Kalyan Textiles. Get 15% off on Ethnic Wear with code FESTIVE15. http://xeno.shop/festive',
+          status: 'read',
+          retryCount: 0,
+          createdAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          updatedAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          timeline: [{ status: 'pending', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }, { status: 'read', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }],
+          variant: 'A'
+        },
+        {
+          id: 'msg_03',
+          campaignId: 'camp_d2c_in_01',
+          customerId: 'cust_d2c_in_07',
+          channel: 'whatsapp',
+          recipient: '+91 88990 01122',
+          content: 'Hey Anika! Elevate your style with Kalyan Textiles. Get 15% off on Ethnic Wear with code FESTIVE15. http://xeno.shop/festive',
+          status: 'clicked',
+          retryCount: 0,
+          createdAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          updatedAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          timeline: [{ status: 'pending', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }, { status: 'clicked', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }],
+          variant: 'A'
+        },
+        {
+          id: 'msg_04',
+          campaignId: 'camp_d2c_in_01',
+          customerId: 'cust_d2c_in_10',
+          channel: 'whatsapp',
+          recipient: '+91 94440 12345',
+          content: 'Hey Aditya! Elevate your style with Kalyan Textiles. Get 15% off on Ethnic Wear with code FESTIVE15. http://xeno.shop/festive',
+          status: 'converted',
+          retryCount: 0,
+          createdAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          updatedAt: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString(),
+          timeline: [{ status: 'pending', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }, { status: 'converted', timestamp: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString() }],
+          variant: 'A'
+        },
+        {
+          id: 'msg_05',
+          campaignId: 'camp_d2c_in_01',
+          customerId: 'cust_d2c_in_12',
+          channel: 'whatsapp',
+          recipient: '+91 99112 23344',
+          content: 'Hey Rohan! Elevate your style with Kalyan Textiles. Get 15% off on Ethnic Wear with code FESTIVE15. http://xeno.shop/festive',
+          status: 'delivered',
+          retryCount: 0,
+          createdAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          updatedAt: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString(),
+          timeline: [{ status: 'pending', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }, { status: 'delivered', timestamp: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString() }],
+          variant: 'A'
+        },
+        {
+          id: 'msg_06',
+          campaignId: 'camp_d2c_in_02',
+          customerId: 'cust_d2c_in_04',
+          channel: 'email',
+          recipient: 'sai.reddy@kalyan-d2c.in',
+          content: 'Hi Sai! We miss you at Kalyan Textiles. Enjoy a special 20% discount with code VIPWELCOME20. http://xeno.shop/vip',
+          status: 'delivered',
+          retryCount: 0,
+          createdAt: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString(),
+          updatedAt: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString(),
+          timeline: [{ status: 'pending', timestamp: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString() }, { status: 'delivered', timestamp: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString() }],
+          variant: 'A'
+        },
+        {
+          id: 'msg_07',
+          campaignId: 'camp_d2c_in_02',
+          customerId: 'cust_d2c_in_02',
+          channel: 'email',
+          recipient: 'vihaan.s@kalyan-d2c.in',
+          content: 'Hi Vihaan! We miss you at Kalyan Textiles. Enjoy a special 20% discount with code VIPWELCOME20. http://xeno.shop/vip',
+          status: 'opened',
+          retryCount: 0,
+          createdAt: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString(),
+          updatedAt: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString(),
+          timeline: [{ status: 'pending', timestamp: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString() }, { status: 'opened', timestamp: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString() }],
+          variant: 'A'
+        },
+        {
+          id: 'msg_08',
+          campaignId: 'camp_d2c_in_02',
+          customerId: 'cust_d2c_in_14',
+          channel: 'email',
+          recipient: 'arjun.singh@kalyan-d2c.in',
+          content: 'Hi Arjun! We miss you at Kalyan Textiles. Enjoy a special 20% discount with code VIPWELCOME20. http://xeno.shop/vip',
+          status: 'sending',
+          retryCount: 0,
+          createdAt: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString(),
+          updatedAt: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString(),
+          timeline: [{ status: 'pending', timestamp: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString() }, { status: 'sending', timestamp: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString() }],
+          variant: 'A'
         }
       ]
     }
   },
+
   eu_organic: {
     name: '🇪🇺 BioNatur (European Organic Brand)',
     description: 'European bio & organic shop. Loaded with EU locations, EUR currency, and Berlin timezone.',

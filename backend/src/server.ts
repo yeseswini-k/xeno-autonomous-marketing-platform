@@ -140,15 +140,22 @@ app.get('/api/crm/events/stream', (req, res) => {
 
 // Import Customers & Orders (Bulk)
 app.post('/api/crm/customers/import', (req, res) => {
-  const { customers, orders } = req.body;
+  const { customers, orders, campaigns, messages } = req.body;
   if (customers && Array.isArray(customers)) {
     db.bulkAddCustomers(customers);
   }
   if (orders && Array.isArray(orders)) {
     db.bulkAddOrders(orders);
   }
+  if (campaigns && Array.isArray(campaigns)) {
+    campaigns.forEach(c => db.addCampaign(c));
+  }
+  if (messages && Array.isArray(messages)) {
+    messages.forEach(m => db.addMessage(m));
+  }
   res.json({ success: true, message: `Imported ${customers?.length || 0} customers and ${orders?.length || 0} orders.` });
 });
+
 
 // List Customers (Filters & Pagination)
 app.get('/api/crm/customers', (req, res) => {

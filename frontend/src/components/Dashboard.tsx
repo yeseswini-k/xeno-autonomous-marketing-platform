@@ -26,9 +26,9 @@ const Dashboard: React.FC<DashboardProps> = ({ campaigns, shoppersCount, queues,
 
   const getGreeting = () => {
     const hr = new Date().getHours();
-    if (hr < 12) return 'Good morning';
-    if (hr < 17) return 'Good afternoon';
-    return 'Good evening';
+    if (hr < 12) return 'Good Morning';
+    if (hr < 17) return 'Good Afternoon';
+    return 'Good Evening';
   };
 
   useEffect(() => {
@@ -248,7 +248,7 @@ const Dashboard: React.FC<DashboardProps> = ({ campaigns, shoppersCount, queues,
       }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <h2 style={{ fontFamily: 'Outfit', fontSize: '1.25rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '6px' }}>
-            {getGreeting()}, Yuktha!
+            {getGreeting()}!
           </h2>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.4' }}>
             We've analyzed your customer directories. You have <strong style={{ color: 'var(--primary)', fontWeight: 600 }}>{activeCampaigns}</strong> active campaign{activeCampaigns !== 1 ? 's' : ''} running. 
