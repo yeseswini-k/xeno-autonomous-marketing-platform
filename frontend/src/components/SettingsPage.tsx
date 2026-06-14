@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Palette, Briefcase, RefreshCw } from 'lucide-react';
 import { useSettings, CurrencyType, LocaleType, DateFormatType } from '../context/SettingsContext';
 import { PRESETS } from '../utils/presets';
+const API = import.meta.env.VITE_API_URL;
 
 interface SettingsPageProps {
   onImportSuccess: () => void;
@@ -57,11 +58,11 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ onImportSuccess, showToast 
     setIsApplyingPreset(key);
     try {
       // 1. Reset Database
-      const resetRes = await fetch('/api/crm/system/reset', { method: 'POST' });
+      const resetRes = await fetch(`${API}/api/crm/system/reset', { method: 'POST' });
       if (!resetRes.ok) throw new Error('Database reset failed');
 
       // 2. Import preset seed data
-      const importRes = await fetch('/api/crm/customers/import', {
+      const importRes = await fetch(`${API}/api/crm/customers/import', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(preset.data)

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sliders, Trash2 } from 'lucide-react';
 import { QueueState } from '../App';
+const API = import.meta.env.VITE_API_URL;
 
 interface LogEntry {
   id: string;

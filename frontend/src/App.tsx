@@ -11,6 +11,7 @@ import DataIngester from './components/DataIngester';
 import SettingsPage from './components/SettingsPage';
 import OpportunityCenter from './components/OpportunityCenter';
 import { useSettings } from './context/SettingsContext';
+const API = import.meta.env.VITE_API_URL;
 
 export interface CampaignData {
   id: string;
@@ -140,8 +141,8 @@ function App() {
   // Trigger Simulated Purchase callback
   const triggerSimulatedPurchase = async () => {
     try {
-      const campRes = await fetch(`/api/crm/campaigns?asOf=${asOf}`);
-      const shopRes = await fetch(`/api/crm/customers?asOf=${asOf}`);
+      const campRes = await fetch(`${API}/api/crm/campaigns?asOf=${asOf}`);
+      const shopRes = await fetch(`${API}/api/crm/customers?asOf=${asOf}`);
       if (campRes.ok && shopRes.ok) {
         const campaignsData: CampaignData[] = await campRes.json();
         const shoppersData: any[] = await shopRes.json();
@@ -154,7 +155,7 @@ function App() {
         const randomCampaign = campaignsData[Math.floor(Math.random() * campaignsData.length)];
         const randomShopper = shoppersData[Math.floor(Math.random() * shoppersData.length)];
         
-        const response = await fetch('/api/crm/simulated-purchase', {
+        const response = await fetch(`${API}/api/crm/simulated-purchase', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -191,7 +192,7 @@ function App() {
     { id: 'action_reset', category: 'Danger Zone', name: 'Reset CRM Database', action: () => { 
       setIsCommandPaletteOpen(false);
       if (confirm('Reset CRM database? This will clear all tables and webhooks.')) {
-        fetch('/api/crm/system/reset', { method: 'POST' }).then(() => fetchInitialData());
+        fetch(`${API}/api/crm/system/reset', { method: 'POST' }).then(() => fetchInitialData());
       }
     } }
   ];
@@ -221,20 +222,20 @@ function App() {
   // Fetch initial stats
   const fetchInitialData = async () => {
     try {
-      const campRes = await fetch(`/api/crm/campaigns?asOf=${asOf}`);
+      const campRes = await fetch(`${API}/api/crm/campaigns?asOf=${asOf}`);
       if (campRes.ok) {
         const campData = await campRes.json();
         setCampaigns(campData);
       }
       
-      const shopRes = await fetch(`/api/crm/customers?asOf=${asOf}`);
+      const shopRes = await fetch(`${API}/api/crm/customers?asOf=${asOf}`);
       if (shopRes.ok) {
         const shopData = await shopRes.json();
         setShoppersCount(shopData.length);
       }
 
       // Fetch existing conversions to pre-populate liveEvents stream
-      const convRes = await fetch(`/api/crm/conversions?asOf=${asOf}`);
+      const convRes = await fetch(`${API}/api/crm/conversions?asOf=${asOf}`);
       if (convRes.ok) {
         const convData = await convRes.json();
         const initialConvs = convData.map((c: any) => ({
@@ -280,7 +281,7 @@ function App() {
 
     // Connect to SSE stream
     console.log('[SSE] Connecting to event stream...');
-    const eventSource = new EventSource('/api/crm/events/stream');
+    const eventSource = new EventSource(`${API}/api/crm/events/stream`);
 
     eventSource.onopen = () => {
       setIsConnected(true);
