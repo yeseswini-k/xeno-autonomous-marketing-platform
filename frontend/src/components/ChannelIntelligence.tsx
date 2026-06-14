@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, AlertTriangle, CheckCircle, TrendingUp, Info } from 'lucide-react';
+import { Sparkles, AlertTriangle,   Info } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
 
 export interface ChannelMetrics {
