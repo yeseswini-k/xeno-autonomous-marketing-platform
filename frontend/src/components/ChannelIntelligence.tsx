@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSettings } from '../context/SettingsContext';
+import { Sparkles, AlertTriangle } from 'lucide-react';
 
 export interface ChannelMetrics {
   channel: 'whatsapp' | 'sms' | 'email' | 'rcs' | 'push';
