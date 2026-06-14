@@ -1,0 +1,250 @@
+{
+  "customers": [
+    {
+      "id": "cust_eu_org_01",
+      "name": "Lukas Weber",
+      "email": "l.weber@bionatur.de",
+      "phone": "+49 30 5550119",
+      "createdAt": "2026-06-10T15:34:52.790Z",
+      "metadata": {
+        "preferredCategory": "Organic Wear",
+        "loyaltyTier": "VIP",
+        "location": "Berlin",
+        "acquisitionChannel": "Instagram"
+      }
+    },
+    {
+      "id": "cust_eu_org_02",
+      "name": "Chloé Dubois",
+      "email": "chloe.dubois@bionatur.fr",
+      "phone": "+33 1 5550244",
+      "createdAt": "2026-05-05T15:34:52.790Z",
+      "metadata": {
+        "preferredCategory": "Cosmetics",
+        "loyaltyTier": "Member",
+        "location": "Paris",
+        "acquisitionChannel": "Google Search"
+      }
+    },
+    {
+      "id": "cust_eu_org_03",
+      "name": "Sven van der Berg",
+      "email": "sven.vdb@bionatur.nl",
+      "phone": "+31 20 5550312",
+      "createdAt": "2026-06-12T15:34:52.790Z",
+      "metadata": {
+        "preferredCategory": "Home Gear",
+        "loyaltyTier": "Standard",
+        "location": "Amsterdam",
+        "acquisitionChannel": "Referral"
+      }
+    },
+    {
+      "id": "cust_eu_org_04",
+      "name": "Emma Müller",
+      "email": "e.mueller@bionatur.de",
+      "phone": "+49 30 5550455",
+      "createdAt": "2026-04-25T15:34:52.790Z",
+      "metadata": {
+        "preferredCategory": "Organic Wear",
+        "loyaltyTier": "VIP",
+        "location": "Berlin",
+        "acquisitionChannel": "TikTok"
+      }
+    },
+    {
+      "id": "cust_eu_org_05",
+      "name": "Leon Lefevre",
+      "email": "leon.lefevre@bionatur.fr",
+      "phone": "+33 1 5550588",
+      "createdAt": "2026-05-30T15:34:52.790Z",
+      "metadata": {
+        "preferredCategory": "Cosmetics",
+        "loyaltyTier": "Member",
+        "location": "Paris",
+        "acquisitionChannel": "Instagram"
+      }
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_eu_org_101",
+      "customerId": "cust_eu_org_01",
+      "amount": 120,
+      "items": [
+        "Organic Cotton Hoodie",
+        "Eco Wool Socks"
+      ],
+      "status": "completed",
+      "createdAt": "2026-06-11T15:34:52.790Z"
+    },
+    {
+      "id": "ord_eu_org_102",
+      "customerId": "cust_eu_org_02",
+      "amount": 75,
+      "items": [
+        "Biodegradable Phone Case"
+      ],
+      "status": "completed",
+      "createdAt": "2026-05-05T15:34:52.790Z"
+    },
+    {
+      "id": "ord_eu_org_103",
+      "customerId": "cust_eu_org_03",
+      "amount": 210,
+      "items": [
+        "Bamboo Bath Towels",
+        "Eco Yoga Mat"
+      ],
+      "status": "completed",
+      "createdAt": "2026-06-12T15:34:52.790Z"
+    },
+    {
+      "id": "ord_eu_org_104",
+      "customerId": "cust_eu_org_04",
+      "amount": 45,
+      "items": [
+        "Reusable Bamboo Mug",
+        "Canvas Shopper"
+      ],
+      "status": "completed",
+      "createdAt": "2026-04-25T15:34:52.790Z"
+    },
+    {
+      "id": "ord_eu_org_105",
+      "customerId": "cust_eu_org_05",
+      "amount": 185,
+      "items": [
+        "Organic Cotton Hoodie",
+        "Recycled Wool Beanie"
+      ],
+      "status": "completed",
+      "createdAt": "2026-05-31T15:34:52.790Z"
+    },
+    {
+      "id": "a9a61f3f-7c7d-4712-8c09-fc8886130291",
+      "customerId": "cust_eu_org_04",
+      "amount": 54.22,
+      "items": [
+        "Canvas Tote Bag",
+        "Insulated Travel Tumbler"
+      ],
+      "status": "completed",
+      "createdAt": "2026-06-14T16:18:29.292Z",
+      "campaignId": "d9c7aad7-1cf4-4c56-b1e6-2db6f3852172"
+    },
+    {
+      "id": "d78d436e-6787-45b9-b9cb-81bf17aa5a74",
+      "customerId": "cust_eu_org_02",
+      "amount": 31.17,
+      "items": [
+        "Insulated Travel Tumbler"
+      ],
+      "status": "completed",
+      "createdAt": "2026-06-14T17:44:43.703Z",
+      "campaignId": "d9c7aad7-1cf4-4c56-b1e6-2db6f3852172"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "d9c7aad7-1cf4-4c56-b1e6-2db6f3852172",
+      "name": "VIP Inactivity Winback",
+      "segmentRules": {
+        "lastOrderDaysAgo": 45,
+        "customFilter": "VIP"
+      },
+      "messageTemplate": "Hey {{first_name}}! We notice you haven't shopped with us in a while. As a VIP, here is an exclusive 20% off code: VIPWELCOME20. http://xeno.shop/vip",
+      "channel": "whatsapp",
+      "status": "completed",
+      "createdAt": "2026-06-14T16:18:14.342Z",
+      "stats": {
+        "total": 1,
+        "sent": 1,
+        "delivered": 1,
+        "failed": 0,
+        "opened": 1,
+        "read": 1,
+        "clicked": 1,
+        "converted": 1,
+        "revenue": 54.22
+      },
+      "isABTest": false
+    },
+    {
+      "id": "25bd615f-300c-409a-b1c3-53fe6862711e",
+      "name": "Saree Completer Cross-Sell",
+      "segmentRules": {
+        "minOrders": 1,
+        "customFilter": "Ethnic Wear"
+      },
+      "messageTemplate": "Hi {{first_name}}! Complete your saree look with our matching premium blouse collection. Get 10% off with code BLOUSE10. http://xeno.shop/blouses",
+      "channel": "email",
+      "status": "completed",
+      "createdAt": "2026-06-14T17:43:25.459Z",
+      "stats": {
+        "total": 0,
+        "sent": 0,
+        "delivered": 0,
+        "failed": 0,
+        "opened": 0,
+        "read": 0,
+        "clicked": 0,
+        "converted": 0,
+        "revenue": 0
+      },
+      "isABTest": false
+    }
+  ],
+  "messages": [
+    {
+      "id": "ef3428eb-9c6c-4566-a0d5-1a251c21d7d9",
+      "campaignId": "d9c7aad7-1cf4-4c56-b1e6-2db6f3852172",
+      "customerId": "cust_eu_org_04",
+      "channel": "whatsapp",
+      "recipient": "+49 30 5550455",
+      "content": "Hey Emma! We notice you haven't shopped with us in a while. As a VIP, here is an exclusive 20% off code: VIPWELCOME20. http://xeno.shop/vip",
+      "status": "converted",
+      "retryCount": 0,
+      "createdAt": "2026-06-14T16:18:14.343Z",
+      "updatedAt": "2026-06-14T16:18:29.292Z",
+      "timeline": [
+        {
+          "status": "pending",
+          "timestamp": "2026-06-14T16:18:14.343Z"
+        },
+        {
+          "status": "sending",
+          "timestamp": "2026-06-14T16:18:14.345Z"
+        },
+        {
+          "status": "sent",
+          "timestamp": "2026-06-14T16:18:15.887Z"
+        },
+        {
+          "status": "delivered",
+          "timestamp": "2026-06-14T16:18:17.395Z"
+        },
+        {
+          "status": "read",
+          "timestamp": "2026-06-14T16:18:22.480Z"
+        },
+        {
+          "status": "clicked",
+          "timestamp": "2026-06-14T16:18:26.298Z"
+        },
+        {
+          "status": "converted",
+          "timestamp": "2026-06-14T16:18:29.292Z"
+        }
+      ]
+    }
+  ],
+  "channelConfig": {
+    "latencyMin": 500,
+    "latencyMax": 2000,
+    "successRate": 0.95,
+    "openRate": 0.7,
+    "clickRate": 0.3,
+    "conversionRate": 0.15
+  }
+}
